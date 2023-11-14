@@ -1,0 +1,2 @@
+backend/app/scraper/scraped_data/*
+.venv/Scripts/python.exe

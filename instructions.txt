@@ -1,0 +1,6 @@
+built usint node version 20.9
+
+cd myapp
+npm install
+npm run dev
+
