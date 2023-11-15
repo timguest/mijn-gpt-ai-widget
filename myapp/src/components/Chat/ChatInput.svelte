@@ -79,7 +79,7 @@
 
 	const sendMessageToApi = async (messageText: string) => {
 		try {
-			const response = await fetch('http://127.0.0.1:5000/messsage', {
+			const response = await fetch('http://127.0.0.1:5000/message', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
