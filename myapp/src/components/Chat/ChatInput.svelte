@@ -1,9 +1,8 @@
 <script lang="ts">
-	import { Textarea, Alert, ToolbarButton } from 'flowbite-svelte';
-	import { PapperPlaneOutline } from 'flowbite-svelte-icons';
 	import { createEventDispatcher } from 'svelte';
 	import { messages } from '../../store/store';
 	import type { Message } from '../../types/index';
+	import paperplane from "./svg/paper-plane-svgrepo-com.svg"
 
 	const dispatch = createEventDispatcher();
 	let text = '';
@@ -105,40 +104,25 @@
 		disableInput = false;
 	};
 
-	const adjustHeight = (event: Event) => {
-		const element = event.target as HTMLTextAreaElement;
-		element.style.height = `${element.scrollHeight}px`;
-	};
 </script>
 
-<div class="absolute inset-x-1 bottom-0 bg-fixed">
-	<form>
-		<Alert color="dark" class="px-2 py-2 my-1 bg-secondary-100 rounded-t-none">
-			<svelte:fragment slot="icon">
-				<Textarea
-					disabled={disableInput}
-					id="chat"
-					class="mx-5 overflow-hidden"
-					rows="0"
-					placeholder="Your message..."
-					bind:value={text}
-					on:input={adjustHeight}
-					on:keyup={(event) => {
-						if (!event.shiftKey && event.key === 'Enter') {
-							sendMessage();
-						}
-					}}
-				/>
-				<ToolbarButton
-					type="submit"
-					color="blue"
-					class="rounded-full text-primary-601 dark:text-primary-500"
-					on:click={sendMessage}
-				>
-					<PapperPlaneOutline class="w-6 h-5 rotate-45" />
-					<span class="sr-only">Send message</span>
-				</ToolbarButton>
-			</svelte:fragment>
-		</Alert>
+<div class="absolute inset-x-0 bottom-0 bg-fixed">
+	<form on:submit|preventDefault={sendMessage} class="flex items-center justify-between p-2 bg-secondary-100">
+		<input
+			type="text"
+			id="chat"
+			class="flex-1 mx-5 rounded-md shadow-sm border-gray-300 focus:ring focus:ring-opacity-50"
+			placeholder="Waar bent u naar op zoek?"
+			bind:value={text}
+		/>
+
+		<button
+			type="submit"
+			class="p-2 mr-3 text-white bg-secondary-100 rounded-full hover:bg-secondary-200 focus:outline-none"
+			aria-label="Send message"
+		>
+  <img src={paperplane} alt="Send" class="w-6 h-6" />
+			<span class="sr-only">Send message</span>
+		</button>
 	</form>
 </div>
