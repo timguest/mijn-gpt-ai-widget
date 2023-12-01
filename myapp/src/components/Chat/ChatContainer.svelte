@@ -29,9 +29,9 @@
 	});
 </script>
 
-<div class="fixed bottom-4 right-4 w-1/3 h-1/2 z-50 bg-white shadow-lg rounded-lg flex flex-col">
+<div class="fixed bottom-4 right-4 max-w-md min-w-[300px] h-1/2 z-50 bg-white shadow-lg rounded-lg flex flex-col">
 	<ChatHeader />
-	<div id="chatLog" class="flex-grow overflow-y-auto" style="max-height: calc(100% - 3.5rem);">
+	<div id="chatLog" class="flex-grow overflow-y-auto">
 		<ChatLog />
 	</div>
 	<div class="flex-none h-16 bg-secondary-100">
